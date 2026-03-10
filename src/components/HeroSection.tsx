@@ -19,7 +19,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="order-2 lg:order-1"
+            className="order-2 md:order-1"
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
               Data Analyst & Visualization Expert
