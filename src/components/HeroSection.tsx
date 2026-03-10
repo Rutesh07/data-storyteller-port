@@ -13,13 +13,13 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="order-2 lg:order-1"
+            className="order-2 md:order-1"
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
               Data Analyst & Visualization Expert
@@ -66,7 +66,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex justify-center lg:justify-end order-1 lg:order-2"
+            className="flex justify-center md:justify-end order-1 md:order-2"
           >
             <div className="relative">
               <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-card-hover relative z-10">
