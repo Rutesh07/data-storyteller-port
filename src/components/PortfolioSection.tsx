@@ -54,8 +54,15 @@ const PortfolioSection = () => {
   const filtered = active === "All" ? projects : projects.filter((p) => p.category === active);
 
   return (
-    <section id="portfolio" className="section-padding bg-card">
-      <div className="container mx-auto">
+    <section id="portfolio" className="section-padding bg-card relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-72 h-72 rounded-full bg-accent/5 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,hsl(var(--primary)/0.02)_1px,transparent_0)] bg-[length:32px_32px]" />
+      </div>
+
+      <div className="container mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,72 +71,87 @@ const PortfolioSection = () => {
         >
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">Portfolio</span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold mt-3">
-            Digital Product Showcases
+            Digital Product <span className="text-gradient">Showcases</span>
           </h2>
         </motion.div>
 
         {/* Filters */}
-        <div className="flex justify-center gap-3 mb-12 flex-wrap">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex justify-center gap-3 mb-12 flex-wrap"
+        >
           {filters.map((f) => (
-            <button
+            <motion.button
               key={f}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => setActive(f)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${
+              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
                 active === f
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-primary text-primary-foreground shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
                   : "bg-secondary text-secondary-foreground hover:bg-primary/10 hover:text-primary"
               }`}
             >
               {f}
-            </button>
+            </motion.button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Projects */}
         <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           <AnimatePresence mode="popLayout">
-            {filtered.map((p) => (
+            {filtered.map((p, i) => (
               <motion.div
                 key={p.title}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                className="group p-6 rounded-2xl bg-background border border-border hover:border-primary/30 hover:shadow-card-hover transition-all"
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                whileHover={{ y: -4 }}
+                className="group relative p-6 rounded-2xl bg-background border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <div>
-                    <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-2">
-                      {p.tool}
-                    </span>
-                    <h3 className="text-lg font-heading font-bold">{p.title}</h3>
+                {/* Subtle gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+                
+                <div className="relative z-10">
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-2 border border-primary/20">
+                        {p.tool}
+                      </span>
+                      <h3 className="text-lg font-heading font-bold">{p.title}</h3>
+                    </div>
+                    <ExternalLink size={18} className="text-muted-foreground group-hover:text-primary group-hover:rotate-12 transition-all mt-1 shrink-0" />
                   </div>
-                  <ExternalLink size={18} className="text-muted-foreground group-hover:text-primary transition-colors mt-1 shrink-0" />
+                  <p className="text-xs text-muted-foreground mb-2">{p.period}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+
+                  <button
+                    onClick={() => setExpanded(expanded === p.title ? null : p.title)}
+                    className="mt-3 flex items-center gap-1 text-sm font-semibold text-primary hover:opacity-80 transition-opacity"
+                  >
+                    {expanded === p.title ? "Less" : "Key Outcomes"}
+                    {expanded === p.title ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  </button>
+
+                  <AnimatePresence>
+                    {expanded === p.title && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="mt-3 text-sm text-foreground bg-gradient-to-r from-primary/10 to-accent/5 p-3 rounded-xl border border-primary/10">
+                          {p.outcomes}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-                <p className="text-xs text-muted-foreground mb-2">{p.period}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
-
-                <button
-                  onClick={() => setExpanded(expanded === p.title ? null : p.title)}
-                  className="mt-3 flex items-center gap-1 text-sm font-semibold text-primary hover:opacity-80 transition-opacity"
-                >
-                  {expanded === p.title ? "Less" : "Key Outcomes"}
-                  {expanded === p.title ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                </button>
-
-                <AnimatePresence>
-                  {expanded === p.title && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="mt-3 text-sm text-foreground bg-primary/5 p-3 rounded-xl">{p.outcomes}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
             ))}
           </AnimatePresence>
