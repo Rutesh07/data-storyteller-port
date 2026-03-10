@@ -4,83 +4,74 @@ import profileImg from "@/assets/profile.png";
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center section-padding pt-28 overflow-hidden">
-      {/* Abstract bg shapes */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-primary/10 blur-3xl" />
-        <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-accent/10 blur-3xl" />
-        <div className="absolute bottom-10 left-1/4 w-48 h-48 rounded-full bg-primary/5 blur-2xl" />
+    <section id="home" className="relative min-h-screen flex items-end section-padding pt-28 overflow-hidden bg-primary">
+      {/* Decorative circles */}
+      <div className="absolute top-20 right-[15%] w-64 h-64 md:w-80 md:h-80 rounded-full bg-accent opacity-80" />
+      <div className="absolute -bottom-20 left-[40%] w-72 h-72 md:w-96 md:h-96 rounded-full bg-accent opacity-70" />
+      <div className="absolute top-1/4 -left-4 flex flex-col gap-3">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="w-2.5 h-2.5 rounded-full bg-primary-foreground/40" />
+        ))}
+      </div>
+      <div className="absolute top-1/4 right-4 flex flex-col gap-3">
+        {[...Array(8)].map((_, i) => (
+          <div key={i} className="w-2.5 h-2.5 rounded-full bg-primary-foreground/40" />
+        ))}
       </div>
 
       <div className="container mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 items-end">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="order-2 lg:order-1"
+            className="pb-12 md:pb-20"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
-              Data Analyst & Visualization Expert
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 text-primary-foreground">
               Hello, I'm{" "}
-              <span className="text-gradient">Rutesh Zalavadiya</span>
+              <br />
+              <span className="text-accent">Rutesh Zalavadiya</span>
+              <br />
+              <span className="text-primary-foreground">A Data Analyst</span>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-lg mb-8 leading-relaxed">
+            <p className="text-base md:text-lg text-primary-foreground/70 max-w-lg mb-8 leading-relaxed">
               Data is more than numbers — it's a story waiting to be discovered. I analyze, visualize, and transform data into insights that drive smarter business decisions.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-accent text-accent-foreground font-semibold hover:opacity-90 transition-opacity"
               >
                 Get Started <ArrowRight size={18} />
               </a>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-primary text-primary font-semibold hover:bg-primary hover:text-primary-foreground transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border-2 border-primary-foreground/30 text-primary-foreground font-semibold hover:bg-primary-foreground/10 transition-colors"
               >
                 <Download size={18} /> Download CV
               </a>
             </div>
-
-            {/* Stats */}
-            <div className="flex gap-8 mt-12">
-              {[
-                { num: "2+", label: "Years Experience" },
-                { num: "5+", label: "Projects Completed" },
-                { num: "3+", label: "Tools Mastered" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="text-2xl font-heading font-bold text-foreground">{s.num}</div>
-                  <div className="text-sm text-muted-foreground">{s.label}</div>
-                </div>
-              ))}
-            </div>
           </motion.div>
 
-          {/* Profile Image */}
+          {/* Profile Image - right side, bottom-aligned */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex justify-center lg:justify-end order-1 lg:order-2"
+            className="flex justify-center lg:justify-end items-end relative"
           >
-            <div className="relative">
-              <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-card-hover relative z-10">
-                <img
-                  src={profileImg}
-                  alt="Rutesh Zalavadiya"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-accent animate-float" />
-              <div className="absolute -bottom-2 -left-6 w-14 h-14 rounded-full bg-primary/30 animate-float" style={{ animationDelay: "1s" }} />
-              <div className="absolute top-1/2 -right-10 w-8 h-8 rounded-full bg-primary/20 animate-float" style={{ animationDelay: "2s" }} />
+            {/* Experience badge */}
+            <div className="absolute top-8 right-0 lg:right-4 bg-card text-card-foreground rounded-xl px-4 py-3 shadow-card z-20">
+              <span className="text-2xl font-heading font-bold">2+</span>
+              <span className="text-sm text-muted-foreground ml-1">Years<br/>Experience</span>
             </div>
+
+            <img
+              src={profileImg}
+              alt="Rutesh Zalavadiya"
+              className="w-72 md:w-[380px] lg:w-[420px] h-auto object-contain relative z-10"
+            />
           </motion.div>
         </div>
       </div>
