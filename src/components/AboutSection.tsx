@@ -29,7 +29,7 @@ const experience = [
 
 const highlights = [
   { icon: Trophy, label: "1st Place", desc: "Jaguar Land Rover Hackathon", color: "accent" as const },
-  { icon: Database, label: "10K+ Records", desc: "Analyzed & Processed", color: "primary" as const },
+  { icon: Database, label: "50K+ Records", desc: "Analyzed & Processed", color: "primary" as const },
   { icon: TrendingUp, label: "~40% Faster", desc: "Data Processing Efficiency", color: "primary" as const },
 ];
 
@@ -81,18 +81,25 @@ const AboutSection = () => {
               <span className="text-foreground font-medium">SQL</span> and{" "}
               <span className="text-foreground font-medium">Python</span> to building interactive dashboards using{" "}
               <span className="text-foreground font-medium">Tableau</span> and{" "}
-              <span className="text-foreground font-medium">Power BI</span>.
+              <span className="text-foreground font-medium">Power BI</span> that help organizations track performance and make data-driven decisions.
             </p>
             <p className="mt-4">
-              My journey began at <span className="text-foreground font-medium">Sparks To Ideas</span>, where I analyzed{" "}
-              <span className="text-primary font-bold">10K+ records</span> and streamlined data workflows. A defining moment was the{" "}
-              <span className="text-foreground font-semibold">Jaguar Land Rover Hackathon</span>, where we improved processing efficiency by{" "}
-              <span className="text-primary font-bold">~40%</span> and{" "}
-              <span className="text-accent font-bold">secured 1st place</span>.
+              My interest in data began during my internship at <span className="text-foreground font-medium">Sparks To Ideas</span>, where I analyzed{" "}
+              <span className="text-primary font-bold">50K+ records</span> across multiple datasets, developed SQL queries for reporting, and improved data analysis workflows by streamlining data preparation processes.
+            </p>
+            <p className="mt-4">
+              A major milestone was the{" "}
+              <span className="text-foreground font-semibold">Jaguar Land Rover Hackathon</span>, where my team built a data-driven benchmarking solution that improved processing efficiency by{" "}
+              <span className="text-primary font-bold">~40%</span> and analyzed{" "}
+              <span className="text-primary font-bold">10K+ data points</span>, helping us{" "}
+              <span className="text-accent font-bold">secure 1st place</span>.
             </p>
             <p className="mt-4">
               With a <span className="text-foreground font-medium">Master of Applied Computing</span> from the{" "}
-              <span className="text-foreground font-medium">University of Windsor</span>, I bridge data engineering and analytics to deliver scalable, impactful solutions.
+              <span className="text-foreground font-medium">University of Windsor</span>, I've strengthened my expertise in{" "}
+              <span className="text-foreground font-medium">data analytics</span>,{" "}
+              <span className="text-foreground font-medium">ETL workflows</span>, and{" "}
+              <span className="text-foreground font-medium">data warehousing</span> — bridging data engineering and analytics to deliver scalable, impactful solutions.
             </p>
           </motion.div>
         </div>
