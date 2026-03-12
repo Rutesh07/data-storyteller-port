@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Briefcase } from "lucide-react";
+import { GraduationCap, Briefcase, Trophy, Database, TrendingUp } from "lucide-react";
 
 const education = [
   {
@@ -25,6 +25,12 @@ const experience = [
     company: "Sparks To Ideas",
     period: "May 2022 – Dec 2022",
   },
+];
+
+const highlights = [
+  { icon: Trophy, label: "1st Place", desc: "Jaguar Land Rover Hackathon", color: "accent" as const },
+  { icon: Database, label: "10K+ Records", desc: "Analyzed & Processed", color: "primary" as const },
+  { icon: TrendingUp, label: "~40% Faster", desc: "Data Processing Efficiency", color: "primary" as const },
 ];
 
 const cardVariants = {
@@ -55,24 +61,61 @@ const AboutSection = () => {
         >
           <span className="text-sm font-semibold text-primary uppercase tracking-wider">About Me</span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold mt-3">
-            Designing Solutions,<br />
-            <span className="text-gradient">Not Just Visuals</span>
+            Transforming Data Into<br />
+            <span className="text-gradient">Actionable Insights</span>
           </h2>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto mb-16">
-          <motion.p
+        {/* Bio with highlighted keywords */}
+        <div className="max-w-3xl mx-auto mb-12">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-muted-foreground text-center text-lg leading-relaxed"
           >
-            I'm Rutesh Zalavadiya, a Data Analyst & Data Engineer passionate about transforming raw data into reliable data systems and meaningful business insights. I work across the data lifecycle — from extracting and transforming data with SQL and Python to building interactive dashboards using Tableau and Power BI that help organizations track performance and make data-driven decisions.
-            <br /><br />
-            My interest in the data field began during my Data Analyst Internship at Sparks To Ideas, where I analyzed 10K+ records, developed SQL queries for data extraction and reporting, and streamlined data preparation workflows. A key milestone was participating in the Jaguar Land Rover Hackathon, where my team built a data-driven benchmarking solution that improved data processing efficiency by ~40% and secured 1st place.
-            <br /><br />
-            I completed my Master of Applied Computing from the University of Windsor, strengthening my expertise in data analytics, ETL workflows, and data warehousing. I enjoy bridging the gap between data engineering and analytics, ensuring data is scalable, well-structured, and capable of delivering meaningful insights that drive real business impact.
-          </motion.p>
+            <p>
+              I'm <span className="text-foreground font-semibold">Rutesh Zalavadiya</span>, a{" "}
+              <span className="text-primary font-semibold">Data Analyst & Data Engineer</span>{" "}
+              passionate about transforming raw data into reliable data systems and meaningful business insights. I work across the data lifecycle — from extracting and transforming data with{" "}
+              <span className="text-foreground font-medium">SQL</span> and{" "}
+              <span className="text-foreground font-medium">Python</span> to building interactive dashboards using{" "}
+              <span className="text-foreground font-medium">Tableau</span> and{" "}
+              <span className="text-foreground font-medium">Power BI</span>.
+            </p>
+            <p className="mt-4">
+              My journey began at <span className="text-foreground font-medium">Sparks To Ideas</span>, where I analyzed{" "}
+              <span className="text-primary font-bold">10K+ records</span> and streamlined data workflows. A defining moment was the{" "}
+              <span className="text-foreground font-semibold">Jaguar Land Rover Hackathon</span>, where we improved processing efficiency by{" "}
+              <span className="text-primary font-bold">~40%</span> and{" "}
+              <span className="text-accent font-bold">secured 1st place</span>.
+            </p>
+            <p className="mt-4">
+              With a <span className="text-foreground font-medium">Master of Applied Computing</span> from the{" "}
+              <span className="text-foreground font-medium">University of Windsor</span>, I bridge data engineering and analytics to deliver scalable, impactful solutions.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Highlight Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto mb-16">
+          {highlights.map((item, i) => (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.12, duration: 0.5 }}
+              whileHover={{ y: -5, scale: 1.03 }}
+              className={`p-5 rounded-2xl bg-background border border-border text-center hover:shadow-[0_8px_30px_hsl(var(--${item.color})/0.12)] transition-all duration-300`}
+            >
+              <div className={`w-11 h-11 mx-auto mb-3 rounded-xl bg-gradient-to-br ${item.color === 'accent' ? 'from-accent/20 to-accent/5' : 'from-primary/20 to-primary/5'} flex items-center justify-center shadow-[0_0_15px_hsl(var(--${item.color})/0.15)]`}>
+                <item.icon className={item.color === 'accent' ? 'text-accent' : 'text-primary'} size={20} />
+              </div>
+              <div className="text-lg font-bold text-foreground">{item.label}</div>
+              <div className="text-sm text-muted-foreground">{item.desc}</div>
+            </motion.div>
+          ))}
         </div>
 
         <div className="grid md:grid-cols-2 gap-10">
