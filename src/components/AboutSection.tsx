@@ -67,9 +67,11 @@ const AboutSection = () => {
             viewport={{ once: true }}
             className="text-muted-foreground text-center text-lg leading-relaxed"
           >
-            I'm a passionate data analyst who loves turning complex datasets into clear, actionable insights.
-            With expertise in Power BI, Tableau, SQL, and Python, I bridge the gap between raw data and strategic
-            business decisions. My goal is to make data accessible and impactful for everyone.
+            I'm Rutesh Zalavadiya, a Data Analyst & Data Engineer passionate about transforming raw data into reliable data systems and meaningful business insights. I work across the data lifecycle — from extracting and transforming data with SQL and Python to building interactive dashboards using Tableau and Power BI that help organizations track performance and make data-driven decisions.
+            <br /><br />
+            My interest in the data field began during my Data Analyst Internship at Sparks To Ideas, where I analyzed 10K+ records, developed SQL queries for data extraction and reporting, and streamlined data preparation workflows. A key milestone was participating in the Jaguar Land Rover Hackathon, where my team built a data-driven benchmarking solution that improved data processing efficiency by ~40% and secured 1st place.
+            <br /><br />
+            I completed my Master of Applied Computing from the University of Windsor, strengthening my expertise in data analytics, ETL workflows, and data warehousing. I enjoy bridging the gap between data engineering and analytics, ensuring data is scalable, well-structured, and capable of delivering meaningful insights that drive real business impact.
           </motion.p>
         </div>
 
