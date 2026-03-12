@@ -29,7 +29,7 @@ const experience = [
 
 const highlights = [
   { icon: Trophy, label: "1st Place", desc: "Jaguar Land Rover Hackathon", color: "accent" as const },
-  { icon: Database, label: "10K+ Records", desc: "Analyzed & Processed", color: "primary" as const },
+  { icon: Database, label: "50K+ Records", desc: "Analyzed & Processed", color: "primary" as const },
   { icon: TrendingUp, label: "~40% Faster", desc: "Data Processing Efficiency", color: "primary" as const },
 ];
 
