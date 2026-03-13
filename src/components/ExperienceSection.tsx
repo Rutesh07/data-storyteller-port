@@ -7,8 +7,8 @@ const experiences = [
     type: "hackathon",
     role: "Hackathon Winner",
     company: "Jaguar Land Rover & University of Windsor",
-    subtitle: "Data Engineering & Analytics Project | Windsor, Canada",
-    period: "",
+    subtitle: "",
+    period: "Sept 2025 – Jan 2026 | Windsor, ON, Canada",
     bullets: [
       "Built a high-concurrency data benchmarking framework to analyze AI agent performance under heavy workloads.",
       "Processed 10K+ concurrent data requests, identifying system bottlenecks through structured log and performance analysis.",
@@ -16,6 +16,22 @@ const experiences = [
       "Developed performance monitoring dashboards tracking 15+ system efficiency metrics.",
     ],
     skills: ["Python", "SQL", "Linux", "Data Pipelines", "Performance Optimization", "System Analysis"],
+  },
+  {
+    icon: Code,
+    type: "project",
+    role: "Software Developer (Academic Project)",
+    company: "Insight Advantage Inc",
+    subtitle: "",
+    period: "May 2025 – Aug 2025 | Windsor, ON, Canada",
+    bullets: [
+      "Developed a subscription-based web platform connecting vocational rehabilitation consultants with organizations, improving consultant-client discovery and engagement workflows.",
+      "Designed and implemented a scalable Azure SQL database architecture to manage secure user data, subscription plans, and automated billing processes.",
+      "Built a full-stack Consultant Onboarding System using Next.js (frontend) and Node.js with Fastify (backend), enabling structured profile creation and role-based access management.",
+      "Implemented AI-powered matching functionality to recommend relevant projects to consultants based on skills, experience, and availability parameters.",
+      "Developed profile management features, including certification tracking, scheduling modules, and automated contract template generation to streamline onboarding operations.",
+    ],
+    skills: ["Next.js", "Node.js", "Fastify", "Azure SQL", "AI APIs", "Authentication", "Database Design", "Full-Stack Development"],
   },
   {
     icon: BarChart3,
@@ -61,22 +77,6 @@ const experiences = [
       "Generated structured analytical reports highlighting growth opportunities and campaign optimization insights.",
     ],
     skills: ["Tableau", "Python", "SQL", "Data Cleaning", "EDA", "Reporting"],
-  },
-  {
-    icon: Code,
-    type: "project",
-    role: "Software Developer (Academic Project)",
-    company: "Insight Advantage Inc",
-    subtitle: "",
-    period: "May 2025 – Aug 2025 | Windsor, ON, Canada",
-    bullets: [
-      "Developed a subscription-based web platform connecting vocational rehabilitation consultants with organizations, improving consultant-client discovery and engagement workflows.",
-      "Designed and implemented a scalable Azure SQL database architecture to manage secure user data, subscription plans, and automated billing processes.",
-      "Built a full-stack Consultant Onboarding System using Next.js (frontend) and Node.js with Fastify (backend), enabling structured profile creation and role-based access management.",
-      "Implemented AI-powered matching functionality to recommend relevant projects to consultants based on skills, experience, and availability parameters.",
-      "Developed profile management features, including certification tracking, scheduling modules, and automated contract template generation to streamline onboarding operations.",
-    ],
-    skills: ["Next.js", "Node.js", "Fastify", "Azure SQL", "AI APIs", "Authentication", "Database Design", "Full-Stack Development"],
   },
 ];
 
