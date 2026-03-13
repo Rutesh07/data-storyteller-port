@@ -1,31 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Briefcase, Trophy, Database, TrendingUp } from "lucide-react";
-
-const education = [
-  {
-    degree: "Master of Applied Computing",
-    school: "University of Windsor",
-    year: "2025",
-  },
-  {
-    degree: "Bachelor of Technology in Information Technology",
-    school: "Charusat University",
-    year: "2024",
-  },
-];
-
-const experience = [
-  {
-    role: "Data Analyst Intern",
-    company: "CROWN Software",
-    period: "Jan 2024 – Jun 2024",
-  },
-  {
-    role: "Data Analyst Intern",
-    company: "Sparks To Ideas",
-    period: "May 2022 – Dec 2022",
-  },
-];
+import { Trophy, Database, TrendingUp } from "lucide-react";
 
 const highlights = [
   { icon: Trophy, label: "1st Place", desc: "Jaguar Land Rover Hackathon", color: "accent" as const },
