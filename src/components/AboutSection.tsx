@@ -1,31 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Briefcase, Trophy, Database, TrendingUp } from "lucide-react";
-
-const education = [
-  {
-    degree: "Master of Applied Computing",
-    school: "University of Windsor",
-    year: "2025",
-  },
-  {
-    degree: "Bachelor of Technology in Information Technology",
-    school: "Charusat University",
-    year: "2024",
-  },
-];
-
-const experience = [
-  {
-    role: "Data Analyst Intern",
-    company: "CROWN Software",
-    period: "Jan 2024 – Jun 2024",
-  },
-  {
-    role: "Data Analyst Intern",
-    company: "Sparks To Ideas",
-    period: "May 2022 – Dec 2022",
-  },
-];
+import { Trophy, Database, TrendingUp } from "lucide-react";
 
 const highlights = [
   { icon: Trophy, label: "1st Place", desc: "Jaguar Land Rover Hackathon", color: "accent" as const },
@@ -125,71 +99,6 @@ const AboutSection = () => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Education */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center shadow-[0_0_15px_hsl(var(--primary)/0.15)]">
-                <GraduationCap className="text-primary" size={20} />
-              </div>
-              <h3 className="text-xl font-heading font-bold">Education</h3>
-            </div>
-            <div className="space-y-4">
-              {education.map((e, i) => (
-                <motion.div
-                  key={e.degree}
-                  custom={i}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  whileHover={{ y: -4, borderColor: "hsl(var(--primary) / 0.4)" }}
-                  className="p-5 rounded-2xl bg-background border border-border hover:shadow-[0_8px_30px_hsl(var(--primary)/0.12)] transition-all duration-300 cursor-default"
-                >
-                  <div className="text-xs font-semibold text-primary mb-1">{e.year}</div>
-                  <div className="font-semibold text-foreground">{e.degree}</div>
-                  <div className="text-sm text-muted-foreground">{e.school}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Experience */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent/20 to-accent/5 flex items-center justify-center shadow-[0_0_15px_hsl(var(--accent)/0.15)]">
-                <Briefcase className="text-accent" size={20} />
-              </div>
-              <h3 className="text-xl font-heading font-bold">Experience</h3>
-            </div>
-            <div className="space-y-4">
-              {experience.map((e, i) => (
-                <motion.div
-                  key={e.company}
-                  custom={i}
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  whileHover={{ y: -4, borderColor: "hsl(var(--accent) / 0.4)" }}
-                  className="p-5 rounded-2xl bg-background border border-border hover:shadow-[0_8px_30px_hsl(var(--accent)/0.12)] transition-all duration-300 cursor-default"
-                >
-                  <div className="text-xs font-semibold text-accent mb-1">{e.period}</div>
-                  <div className="font-semibold text-foreground">{e.role}</div>
-                  <div className="text-sm text-muted-foreground">{e.company}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );
