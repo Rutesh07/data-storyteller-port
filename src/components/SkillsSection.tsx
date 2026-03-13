@@ -4,7 +4,22 @@ import {
   BarChart3,
   Database,
   Settings2,
-  Check,
+  Code2,
+  LineChart,
+  BarChart,
+  Cloud,
+  Container,
+  GitMerge,
+  Globe,
+  Layers,
+  Server,
+  Snowflake,
+  Table2,
+  Workflow,
+  Braces,
+  Binary,
+  LayoutDashboard,
+  Gauge,
 } from "lucide-react";
 
 const roles = [
@@ -34,19 +49,62 @@ const roles = [
   },
 ];
 
-const technologies = [
-  "Python",
-  "SQL",
-  "Power BI",
-  "Tableau",
-  "Apache Airflow",
-  "Snowflake",
-  "Azure",
-  "Docker",
-  "Git & GitHub",
-  "Streamlit",
-  "REST APIs",
-  "ETL / ELT",
+const skillCategories = [
+  {
+    label: "Languages & Libraries",
+    skills: [
+      { name: "Python", icon: Code2 },
+      { name: "SQL", icon: Database },
+      { name: "pandas", icon: Table2 },
+      { name: "NumPy", icon: Binary },
+      { name: "Matplotlib", icon: LineChart },
+    ],
+  },
+  {
+    label: "Visualization & BI",
+    skills: [
+      { name: "Power BI", icon: BarChart },
+      { name: "Tableau", icon: LayoutDashboard },
+      { name: "Streamlit", icon: Gauge },
+    ],
+  },
+  {
+    label: "Data Engineering",
+    skills: [
+      { name: "Apache Airflow", icon: Workflow },
+      { name: "ETL / ELT Pipelines", icon: GitMerge },
+      { name: "REST APIs", icon: Globe },
+      { name: "Data Modeling", icon: Layers },
+      { name: "Star Schema", icon: Braces },
+      { name: "Data Warehousing", icon: Server },
+    ],
+  },
+  {
+    label: "Databases & Cloud",
+    skills: [
+      { name: "MySQL", icon: Database },
+      { name: "SQL Server", icon: Database },
+      { name: "PostgreSQL", icon: Database },
+      { name: "Snowflake", icon: Snowflake },
+      { name: "Microsoft Azure", icon: Cloud },
+    ],
+  },
+  {
+    label: "DevOps & Tools",
+    skills: [
+      { name: "Docker", icon: Container },
+      { name: "Git", icon: GitBranch },
+      { name: "GitHub", icon: GitMerge },
+    ],
+  },
+];
+
+const categoryColors = [
+  { bg: "from-primary/15 to-primary/5", text: "text-primary", dot: "bg-primary" },
+  { bg: "from-accent/15 to-accent/5", text: "text-accent", dot: "bg-accent" },
+  { bg: "from-primary/15 to-primary/5", text: "text-primary", dot: "bg-primary" },
+  { bg: "from-accent/15 to-accent/5", text: "text-accent", dot: "bg-accent" },
+  { bg: "from-primary/15 to-primary/5", text: "text-primary", dot: "bg-primary" },
 ];
 
 const SkillsSection = () => {
@@ -77,92 +135,115 @@ const SkillsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Role Cards — 2x2 grid */}
-          <div className="lg:col-span-2 grid sm:grid-cols-2 gap-5">
-            {roles.map((role, i) => (
-              <motion.div
-                key={role.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                whileHover={{ y: -6 }}
-                className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden"
-              >
-                {/* Hover glow */}
+        {/* Role Cards — 2x2 grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+          {roles.map((role, i) => (
+            <motion.div
+              key={role.title}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ y: -6 }}
+              className="group relative p-6 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 overflow-hidden"
+            >
+              <div
+                className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br ${
+                  role.color === "accent"
+                    ? "from-accent/10 to-accent/5"
+                    : "from-primary/10 to-primary/5"
+                } rounded-2xl`}
+              />
+              <div className="relative z-10">
                 <div
-                  className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-gradient-to-br ${
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${
                     role.color === "accent"
-                      ? "from-accent/10 to-accent/5"
-                      : "from-primary/10 to-primary/5"
-                  } rounded-2xl`}
-                />
-                <div className="relative z-10">
-                  <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${
-                      role.color === "accent"
-                        ? "from-accent/20 to-accent/5"
-                        : "from-primary/20 to-primary/5"
-                    } flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <role.icon
-                      size={22}
-                      className={
-                        role.color === "accent"
-                          ? "text-accent"
-                          : "text-primary"
-                      }
-                    />
-                  </div>
-                  <h3 className="text-lg font-heading font-bold mb-2">
-                    {role.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {role.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Technologies Grid */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="p-6 rounded-2xl bg-card border border-border"
-          >
-            <h3 className="text-lg font-heading font-bold mb-1">
-              Technologies I Work With
-            </h3>
-            <div className="w-10 h-1 rounded-full bg-primary mb-6" />
-            <div className="grid grid-cols-2 gap-3">
-              {technologies.map((tech, i) => (
-                <motion.div
-                  key={tech}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
-                  whileHover={{
-                    scale: 1.05,
-                    borderColor: "hsl(var(--primary) / 0.5)",
-                  }}
-                  className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-background border border-border text-sm font-medium text-foreground cursor-default transition-all duration-200"
+                      ? "from-accent/20 to-accent/5"
+                      : "from-primary/20 to-primary/5"
+                  } flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
                 >
-                  <Check
-                    size={14}
-                    className="text-primary shrink-0"
-                    strokeWidth={3}
+                  <role.icon
+                    size={22}
+                    className={
+                      role.color === "accent" ? "text-accent" : "text-primary"
+                    }
                   />
-                  <span className="truncate">{tech}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                </div>
+                <h3 className="text-base font-heading font-bold mb-2">
+                  {role.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {role.desc}
+                </p>
+              </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Skills Grid — categorized with icons */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="p-8 rounded-2xl bg-card border border-border"
+        >
+          <h3 className="text-xl font-heading font-bold mb-1 text-center">
+            Technologies I Work With
+          </h3>
+          <div className="w-12 h-1 rounded-full bg-primary mx-auto mb-8" />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillCategories.map((cat, catIdx) => {
+              const colors = categoryColors[catIdx % categoryColors.length];
+              return (
+                <motion.div
+                  key={cat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: catIdx * 0.08, duration: 0.4 }}
+                  className="space-y-3"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
+                    <span className={`text-xs font-bold uppercase tracking-widest ${colors.text}`}>
+                      {cat.label}
+                    </span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {cat.skills.map((skill, skillIdx) => (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, scale: 0.85 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          delay: catIdx * 0.08 + skillIdx * 0.04,
+                          duration: 0.3,
+                        }}
+                        whileHover={{
+                          scale: 1.08,
+                          y: -2,
+                        }}
+                        className={`group/skill flex items-center gap-2 px-3 py-2 rounded-xl bg-gradient-to-br ${colors.bg} border border-border hover:border-primary/30 cursor-default transition-all duration-200`}
+                      >
+                        <skill.icon
+                          size={14}
+                          className={`${colors.text} shrink-0 group-hover/skill:scale-110 transition-transform duration-200`}
+                          strokeWidth={2.5}
+                        />
+                        <span className="text-sm font-medium text-foreground whitespace-nowrap">
+                          {skill.name}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
