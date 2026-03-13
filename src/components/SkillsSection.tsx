@@ -9,27 +9,27 @@ import {
 
 const roles = [
   {
-    icon: GitBranch,
-    title: "Data Pipeline Engineer",
-    desc: "Building scalable ETL/ELT pipelines using Python, SQL, and cloud platforms to process and transform large datasets efficiently.",
+    icon: BarChart3,
+    title: "Data Analytics & Business Intelligence",
+    desc: "Building interactive dashboards and analytical reports using Tableau, Power BI, and SQL to track KPIs, monitor trends, and support data-driven decision-making.",
     color: "primary" as const,
   },
   {
-    icon: BarChart3,
-    title: "Analytics & BI Specialist",
-    desc: "Creating interactive dashboards with Power BI, Tableau, and Streamlit to deliver data-driven insights and business recommendations.",
+    icon: Database,
+    title: "SQL & Data Exploration",
+    desc: "Writing optimized SQL queries for data extraction, transformation, KPI analysis, and trend discovery across structured business datasets.",
     color: "accent" as const,
   },
   {
-    icon: Database,
-    title: "Database Architect",
-    desc: "Designing star schemas, dimensional models, and optimizing SQL queries for analytics workloads on cloud and on-premise databases.",
+    icon: GitBranch,
+    title: "Data Pipeline & ETL Fundamentals",
+    desc: "Designing ETL workflows and structured data pipelines to clean, transform, and prepare raw datasets for scalable analytics and reporting.",
     color: "primary" as const,
   },
   {
     icon: Settings2,
-    title: "ETL & Automation Engineer",
-    desc: "Automating data workflows with Python and Apache Airflow, implementing data quality checks for reliable, production-ready pipelines.",
+    title: "Data Modeling & Warehousing",
+    desc: "Developing star schema models, fact-dimension tables, and analytics-ready datasets to enable efficient querying and business intelligence solutions.",
     color: "accent" as const,
   },
 ];
